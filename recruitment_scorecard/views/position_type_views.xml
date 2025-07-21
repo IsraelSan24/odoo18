@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Position Type List View -->
+    <record id="view_position_type_tree" model="ir.ui.view">
+        <field name="name">recruitment.position.type.list</field>
+        <field name="model">recruitment.position.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Position Type Form View -->
+    <record id="view_position_type_form" model="ir.ui.view">
+        <field name="name">recruitment.position.type.form</field>
+        <field name="model">recruitment.position.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Skill Requirements">
+                            <field name="skill_requirements">
+                                <list editable="bottom">
+                                    <field name="score_skill_id"/>
+                                    <field name="minimum_score"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_position_type" model="ir.actions.act_window">
+        <field name="name">Position Types</field>
+        <field name="res_model">recruitment.position.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first position type!
+            </p>
+            <p>
+                Position types define the skill requirements for different job roles.
+                You can specify minimum scores for each skill.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_position_type"
+              name="Position Types"
+              parent="hr_recruitment.menu_hr_recruitment_config_applications"
+              action="action_position_type"
+              sequence="20"/>
+</odoo>

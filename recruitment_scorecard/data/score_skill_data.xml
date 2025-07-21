@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="score_skill_tech_background" model="recruitment.score.skill">
+            <field name="name">Tech Background</field>
+            <field name="description">1 - Barely managed to get into the call
+2 - Comfortable with basic Excel
+3 - Can troubleshoot most of the computer's issues
+4 - Knows their way around a VLOOKUP or a pivot table
+5 - Can write a simple script (e.g., in Python or an Excel macro) to automate a repetitive task
+6 - Can build a simple but functional application or a full website
+7 - A mid-level software developer with SQL knowledge
+8 - Senior software developer
+9 - Author or contributor to Python, Django, or similar popular software
+10 - Linus Torvalds level</field>
+        </record>
+
+        <record id="score_skill_soft_skills" model="recruitment.score.skill">
+            <field name="name">Soft Skills</field>
+            <field name="description">1 - Offensive &amp; Demeaning
+2 - Rude, Dismissive or Impatient
+3 - Bare minimum Courtesy and Weak Answers
+4 - Polite but weak (Basic answers)
+5 - Presents OK (Professional, clear answers)
+6 - Solid (Active listening, well thought answers)
+7 - Strong (Quick Rapport, likeable)
+8 - Very Strong (Persuasive and Charismatic)
+9 - Exceptional (Real Strong answers, presentation and extremely likable)
+10 - World Class, hire right now</field>
+        </record>
+
+        <record id="position_type_sales_executive" model="recruitment.position.type">
+            <field name="name">Sales Executive</field>
+            <field name="description">Sales executive position requiring moderate technical skills and strong soft skills</field>
+        </record>
+
+        <record id="position_type_backend_developer" model="recruitment.position.type">
+            <field name="name">Backend Developer</field>
+            <field name="description">Backend developer position requiring strong technical skills and moderate soft skills</field>
+        </record>
+
+        <!-- Skill Requirements for Sales Executive -->
+        <record id="requirement_sales_tech" model="recruitment.position.skill.requirement">
+            <field name="position_type_id" ref="position_type_sales_executive"/>
+            <field name="score_skill_id" ref="score_skill_tech_background"/>
+            <field name="minimum_score">4</field>
+        </record>
+
+        <record id="requirement_sales_soft" model="recruitment.position.skill.requirement">
+            <field name="position_type_id" ref="position_type_sales_executive"/>
+            <field name="score_skill_id" ref="score_skill_soft_skills"/>
+            <field name="minimum_score">8</field>
+        </record>
+
+        <record id="requirement_backend_tech" model="recruitment.position.skill.requirement">
+            <field name="position_type_id" ref="position_type_backend_developer"/>
+            <field name="score_skill_id" ref="score_skill_tech_background"/>
+            <field name="minimum_score">8</field>
+        </record>
+
+        <record id="requirement_backend_soft" model="recruitment.position.skill.requirement">
+            <field name="position_type_id" ref="position_type_backend_developer"/>
+            <field name="score_skill_id" ref="score_skill_soft_skills"/>
+            <field name="minimum_score">5</field>
+        </record>
+    </data>
+</odoo>

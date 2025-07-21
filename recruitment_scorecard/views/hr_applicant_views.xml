@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_applicant_form_inherit" model="ir.ui.view">
+        <field name="name">hr.applicant.form.inherit</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Score Card" name="scorecard">
+                    <field name="candidate_scores" readonly="0">
+                        <list editable="bottom" create="false" delete="false">
+                            <field name="score_skill_id" readonly="1"/>
+                            <field name="minimum_required" readonly="1"/>
+                            <field name="score" class="scorecard_score" widget="integer"/>
+                            <field name="is_below_minimum" invisible="1"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_hr_applicant_kanban_inherit" model="ir.ui.view">
+        <field name="name">hr.applicant.kanban.inherit</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_kanban_view_applicant"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='application_status']" position="after">
+                <field name="has_skills_below_minimum" />
+            </xpath>
+
+            <xpath expr="//widget[@name='web_ribbon' and @bg_color='text-bg-secondary']" position="after">
+                <widget name="web_ribbon" title="Below Min" bg_color="text-bg-danger" invisible="not has_skills_below_minimum"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

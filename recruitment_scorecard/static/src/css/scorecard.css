@@ -1,0 +1,57 @@
+/* Scorecard styling */
+.scorecard_score {
+    font-weight: bold;
+}
+
+/* Red highlighting for below minimum scores */
+.o_list_table tbody tr:has(.o_field_cell[name="is_below_minimum"][data-value="true"]) {
+    background-color: #ffebee !important;
+}
+
+.o_list_table tbody tr:has(.o_field_cell[name="is_below_minimum"][data-value="true"]) .scorecard_score {
+    color: #d32f2f !important;
+    background-color: #ffcdd2 !important;
+}
+
+/* Tooltip styling */
+.skill-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.skill-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 400px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -200px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: pre-line;
+}
+
+.skill-tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.skill-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}

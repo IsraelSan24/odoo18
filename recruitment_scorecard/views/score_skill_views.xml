@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_score_skill_tree" model="ir.ui.view">
+        <field name="name">recruitment.score.skill.list</field>
+        <field name="model">recruitment.score.skill</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_score_skill_form" model="ir.ui.view">
+        <field name="name">recruitment.score.skill.form</field>
+        <field name="model">recruitment.score.skill</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="Scoring Guidelines">
+                        <field name="description" nolabel="1" placeholder="Enter scoring guidelines from 1-10..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_score_skill" model="ir.actions.act_window">
+        <field name="name">Score Skills</field>
+        <field name="res_model">recruitment.score.skill</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first score skill!
+            </p>
+            <p>
+                Score skills are used to evaluate candidates on different criteria.
+                Each skill is rated from 1 to 10.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_score_skill"
+              name="Score Skills"
+              parent="hr_recruitment.menu_hr_recruitment_config_applications"
+              action="action_score_skill"
+              sequence="10"/>
+</odoo>
